@@ -119,7 +119,7 @@ userRoute.post("/login",async(req,res)=>{
                     throw err;
                     if(result){
                         // response if email and password are right.
-                        const token=jwt.sign({'userID':user[0]._id},process.env.token)   // created a jwt token
+                        const token=jwt.sign({'userID':user[0]._id},process.env.jwt)   // created a jwt token
                         res.cookie("accessToken",token,{maxAge:1000*60*60}) // setting token into the cookie with expire of 1hr
                         res.status(200).send({msg:"sucessfully Login!"})  
                     }else{
